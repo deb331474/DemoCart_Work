@@ -1,0 +1,79 @@
+package in.debasish.fileIO;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.*;
+
+public class ExcelReader2 {
+
+	public static String[][] readDataBasedUponRowNo(String filePath, int startRow, int endRow) throws Exception{
+		
+		FileInputStream file=new FileInputStream(filePath);
+		Workbook workbook=WorkbookFactory.create(file);
+		Sheet sheet=workbook.getSheetAt(0);
+		
+		
+		if(sheet!=null) {
+			int numberOfRows=endRow-startRow+1;
+			String[][] allRowData=new String[numberOfRows][];
+			
+			for(int i=startRow;i<=endRow;i++) {
+				Row row=sheet.getRow(i-1);
+				
+				if(row!=null) {
+					int numberOfCells=row.getLastCellNum();
+					
+					String[] rowData=new String[numberOfCells];
+					
+					for(int j=0;j<numberOfCells;j++) {
+						Cell cell=row.getCell(j);
+						rowData[j]=getCellValue(cell);
+					}
+					
+					allRowData[i-startRow] =rowData;
+				}
+				else {
+					throw new IllegalStateException("Row " +i+ "Does not exist inside the sheet");
+				}
+			}
+			return allRowData;
+		}
+		else {
+			throw new IllegalStateException("Sheet Does not exist inside the Excel");
+		}
+	}
+
+	public static String getCellValue(Cell cell) {
+
+		if(cell==null)
+		return "";
+		
+		switch (cell.getCellType()) {
+        case STRING:
+            return cell.getStringCellValue();
+        case NUMERIC:
+            return String.valueOf(cell.getNumericCellValue());
+        case BOOLEAN:
+            return String.valueOf(cell.getBooleanCellValue());
+        case FORMULA:
+            return cell.getCellFormula(); // Return formula string
+        default:
+            return "";
+    }	
+	}
+	
+	public static void main(String[] args) throws Exception {
+		String filePath = "../MarchBatchSelenium/MyData.xlsx";
+        int startRow = 2;
+        int endRow = 4;
+            String[][] allRowData = readDataBasedUponRowNo(filePath, startRow, endRow);
+            System.out.println("Data from rows " + startRow + " to " + endRow + ":");
+            for (String[] rowData : allRowData) {
+                for (String data : rowData) {
+                    System.out.print(data + "\t");
+                }
+                System.out.println();
+            }
+        }
+	}
+

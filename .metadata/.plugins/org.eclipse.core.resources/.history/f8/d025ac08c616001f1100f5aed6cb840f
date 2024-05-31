@@ -1,0 +1,16 @@
+package in.debasish.triggerPackage;
+
+import in.debasish.testScripts.TC2_PostRequestAPIBatchUsingUserInput;
+import in.debasish.testScripts.TC3_GetParticularAPIBatch;
+
+public class TriggerClassMain {
+
+	public static void main(String[] args) throws Exception {
+
+		TC2_PostRequestAPIBatchUsingUserInput tc1=new TC2_PostRequestAPIBatchUsingUserInput();
+		tc1.TC2_PostApi();
+		TC3_GetParticularAPIBatch tc3=new TC3_GetParticularAPIBatch();
+		tc3.TC3_GetParticularTest();
+	}
+
+}

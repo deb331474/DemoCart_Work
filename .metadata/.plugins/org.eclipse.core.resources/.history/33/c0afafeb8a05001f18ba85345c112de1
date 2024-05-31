@@ -1,0 +1,10 @@
+package in.debasish.NormalAPITesting;
+
+public class PostRequestDatausingPOJO {
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

@@ -1,0 +1,28 @@
+package in.debasish.testScripts;
+
+import java.util.Properties;
+
+import in.debasish.testSteps.HTTPMethods;
+import in.debasish.utilities.PropertiesHandle;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+
+public class TC5_GetApiStudentByPL {
+	
+	public void getApiBatchStudentByNameTest() throws Exception {
+		
+		Properties p=PropertiesHandle.loadProperties("../ApiAutomation/URI.properties");
+		Properties p1=PropertiesHandle.loadProperties("../ApiAutomation/test-config.properties");
+		HTTPMethods hm=new HTTPMethods(p);
+		String name=p1.getProperty("api.name");
+		
+		 Response response = hm.getAPIBatchStudentsByName("QA_URI_API", name);
+		
+		JsonPath jsonPath=response.
+		
+		hm.getAPIBatchStudentsByName("QA_URI_API",name);
+	}
+	
+	
+
+}

@@ -1,0 +1,69 @@
+package in.debasish.testSteps;
+
+import static io.restassured.RestAssured.*;
+
+import java.util.Properties;
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+public class HTTPMethods {
+	
+	Properties pr;
+	
+	
+	public HTTPMethods(Properties pr){
+		this.pr=pr;
+	}
+	
+	public Response postMethod(String jsonBody,String uriKeyName) {
+		
+		String uriValue=pr.getProperty(uriKeyName);
+		
+		Response res=
+		given().contentType(ContentType.JSON)
+		.body(jsonBody)
+		.when()
+		.post(uriValue);
+		System.out.println("The status code is:"+res.getStatusCode());
+		System.out.println("The post request is:"+res.asPrettyString());
+		return res;
+		
+		
+	}
+	
+	public void getMethod(String uriKeyName) {
+		
+		String uriValue=pr.getProperty(uriKeyName);
+		Response res=given().contentType(ContentType.JSON)
+				.when().get(uriValue);
+		
+		System.out.println(res.getStatusCode());
+		System.out.println(res.asPrettyString());
+	}
+	
+   public Response getParticularMethod(String uriKeyName,String endPointValue) {
+		
+		String uriValue=pr.getProperty(uriKeyName)+"/"+endPointValue;
+		Response res=given().contentType(ContentType.JSON)
+				.when().get(uriValue);
+		
+		System.out.println(res.getStatusCode());
+		System.out.println(res.asPrettyString());
+		
+		return res;
+	}
+   
+   public Response getAPIBatchStudentsByName(String uriKeyName,String name) {
+	   String uriValue=pr.getProperty(uriKeyName)+"?name="+name;
+	   
+	   Response res=given().contentType(ContentType.JSON)
+				.when().get(uriValue);
+		
+		System.out.println(res.getStatusCode());
+		System.out.println(res.asPrettyString());
+		
+		return res;
+   }
+
+}

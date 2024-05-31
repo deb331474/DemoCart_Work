@@ -1,0 +1,18 @@
+package in.debasish.testScripts;
+
+import java.util.Properties;
+
+import in.debasish.testSteps.HTTPMethods;
+import in.debasish.utilities.PropertiesHandle;
+
+public class TC7_DeleteParticularRequest {
+	
+	public void deleteParticularRequest() throws Exception {
+		Properties p=PropertiesHandle.loadProperties("../ApiAutomation/URI.properties");
+		HTTPMethods hm=new HTTPMethods(p);
+		hm.deleteParticularMethod("QA_URI_API", TC2_PostRequestAPIBatchUsingUserInput.returnIdValue);
+		
+		System.out.println("The particular record with id "+TC2_PostRequestAPIBatchUsingUserInput.returnIdValue+" Is deleted");
+	}
+
+}

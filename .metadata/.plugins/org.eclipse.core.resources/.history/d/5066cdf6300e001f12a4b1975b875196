@@ -1,0 +1,30 @@
+
+package in.debasish.NormalAPITesting;
+
+import static io.restassured.RestAssured.given;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+public class APIBatchJsonExtractionUsingOrgJson {
+
+	public static void main(String[] args) {
+
+		Response res=given().contentType(ContentType.JSON).when().get("http://localhost:3000/APIBatchStudents");
+		//System.out.println("Status Code is"+res.getStatusCode());
+		//System.out.println("The complete data is:"+res.asString());
+		
+		
+		JSONArray js=new JSONArray(res.asString());
+		JSONObject jo=js.getJSONObject(0);
+		System.out.println("The intended age is:"+jo.get("age"));
+		System.out.println("The intended id is:"+jo.get("id"));
+		System.out.println("The intended name is:"+jo.get("name"));
+		System.out.println("The intended skills are:"+jo.get("programming_languages"));
+		
+	}
+
+}

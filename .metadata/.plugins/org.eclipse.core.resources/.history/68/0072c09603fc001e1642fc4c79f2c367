@@ -1,0 +1,69 @@
+package in.debasish.VariablesandMethods;
+
+import java.util.Scanner;
+
+public class ScannerClassAssighments2{
+	
+	
+	//(((((x1-x2)+x3)*x4)-x5)/x6)
+	
+	
+	int multiply(int a,int b) {
+		
+		return a*b;
+	}
+	
+	int sum(int a,int b) {
+		
+		return a+b;
+	}
+	
+	int subtraction(int a,int b) {
+		
+		return a-b;
+	}
+	
+	int division(int a,int b) {
+		
+		return a/b;
+	}
+
+	public static void main(String[] args) {
+
+		
+		ScannerClassAssighments2 sca2=new ScannerClassAssighments2();
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the value of x1:");
+		int x1=sc.nextInt();
+		
+		System.out.println("Enter the value of x2:");
+		int x2=sc.nextInt();
+		
+		int subRes1=sca2.subtraction(x1, x2);
+		
+		System.out.println("Enter the value of x3:");
+		int x3=sc.nextInt();
+		
+		int sumRes=sca2.sum(subRes1, x3);
+		
+		System.out.println("Enter the value of x4:");
+		int x4=sc.nextInt();
+		
+		int mulRes=sca2.subtraction(sumRes, x4);
+		
+		System.out.println("Enter the value of x5:");
+		int x5=sc.nextInt();
+		
+		int subRes2=sca2.sum(x5, mulRes);
+		
+		System.out.println("Enter the value of x6:");
+		int x6=sc.nextInt();
+		
+		int divRes=sca2.division(subRes2,x6);
+		
+		System.out.println("The final result after division is:"+divRes);
+		
+	}
+
+}

@@ -1,0 +1,37 @@
+package in.debasish.VariablesandMethods;
+
+import java.util.Scanner;
+
+public class ScannerClassAssighments1{
+	
+	
+	void multiply(int a,int b) {
+		
+	}
+
+	public static void main(String[] args) {
+
+		
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the value of x1:");
+		int x1=sc.nextInt();
+		
+		System.out.println("Enter the value of x2:");
+		int x2=sc.nextInt();
+		
+		System.out.println("Enter the value of x3:");
+		int x3=sc.nextInt();
+		
+		System.out.println("Enter the value of x4:");
+		int x4=sc.nextInt();
+		
+		System.out.println("Enter the value of x5:");
+		int x5=sc.nextInt();
+		
+		System.out.println("Enter the value of x6:");
+		int x6=sc.nextInt();
+		
+	}
+
+}

@@ -1,0 +1,43 @@
+package in.debasish.testScripts;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+
+import in.debasish.testSteps.HTTPMethods;
+import in.debasish.utilities.PropertiesHandle;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+
+public class TC5_GetApiStudentByPL {
+
+	public void getApiBatchStudentByNameTest() throws Exception {
+
+		Properties p = PropertiesHandle.loadProperties("../ApiAutomation/URI.properties");
+		Properties p1 = PropertiesHandle.loadProperties("../ApiAutomation/test-config.properties");
+		HTTPMethods hm = new HTTPMethods(p);
+		String name = p1.getProperty("api.name");
+		String programmingLanguages = p1.getProperty("api.programming_languages");
+		String email=p1.getProperty("api.email");
+
+		Map<String, String> queryParams = new HashMap<>();
+		//queryParams.put("name",name);
+		 queryParams.put("name", name);
+	     queryParams.put("programming_languages", programmingLanguages);
+		hm.getWithQueryParam("QA_URI_API", queryParams);
+		
+		Response res=hm.getWithQueryParam("QA_URI_API", queryParams);
+		
+		JsonPath jsonPath=res.jsonPath();
+        List<Map<String, Object>> students = jsonPath.getList("$");
+        
+        for (Map<String, Object> student : students) {
+            List<String> programmingLanguagesList = (List<String>) student.get("programming_languages");
+            System.out.println("Programming Languages for " + student.get("name") + ": " + programmingLanguagesList);
+        }
+		
+
+	}
+
+}

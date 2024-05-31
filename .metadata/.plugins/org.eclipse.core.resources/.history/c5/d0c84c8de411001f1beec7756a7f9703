@@ -1,0 +1,66 @@
+package in.debasish.fileIO;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.*;
+
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelReader3 {
+	
+	 public static String[] readDataBasedUponRowNo(String filePath, int rowNumber) throws Exception {
+	        FileInputStream file = new FileInputStream(filePath);
+	        Workbook workbook = WorkbookFactory.create(file);
+	        Sheet sheet = workbook.getSheetAt(0); 
+	        if (sheet != null) {
+	            Row row = sheet.getRow(rowNumber - 1);
+
+	            if (row != null) {
+	                int numberOfCells = row.getLastCellNum();
+	                String[] rowData = new String[numberOfCells];
+
+	                for (int i = 0; i < numberOfCells; i++) {
+	                    Cell cell = row.getCell(i);
+	                    rowData[i] = getCellValue(cell);
+	                }
+
+	                return rowData;
+	            } else {
+	                throw new IllegalArgumentException("Row " + rowNumber + " does not exist in the sheet.");
+	            }
+	        } else {
+	            throw new IllegalArgumentException("Sheet not found in the Excel file.");
+	        }
+	    }
+
+	    private static String getCellValue(Cell cell) {
+	        if (cell == null) {
+	            return "";
+	        }
+
+	        switch (cell.getCellType()) {
+	            case STRING:
+	                return cell.getStringCellValue();
+	            case NUMERIC:
+	                return String.valueOf(cell.getNumericCellValue());
+	            case BOOLEAN:
+	                return String.valueOf(cell.getBooleanCellValue());
+	            case FORMULA:
+	                return cell.getCellFormula(); // Return formula string
+	            default:
+	                return "No data Found";
+	        }
+	    }
+
+	    public static void main(String[] args) throws Exception {
+	        String filePath = "../MarchBatchSelenium/MyData.xlsx";
+	        int rowNo = 2;
+
+	        
+	            String[] rowData = readDataBasedUponRowNo(filePath, rowNo);
+	            System.out.println("Data from row " + rowNo + ":");
+	            for (String data : rowData) {
+	                System.out.println(data);
+	            }
+	        }
+}

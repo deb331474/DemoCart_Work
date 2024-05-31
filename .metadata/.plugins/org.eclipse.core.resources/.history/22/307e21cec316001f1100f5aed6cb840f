@@ -1,0 +1,13 @@
+package in.debasish.triggerPackage;
+
+import in.debasish.testScripts.TC1_PostRequestAPIBatchUsingUserInput;
+
+public class TriggerClassMain {
+
+	public static void main(String[] args) throws Exception {
+
+		TC1_PostRequestAPIBatchUsingUserInput tc1=new TC1_PostRequestAPIBatchUsingUserInput();
+		tc1.TC1_PostApi();
+	}
+
+}

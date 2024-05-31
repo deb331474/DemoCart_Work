@@ -1,0 +1,72 @@
+package in.debasish.fileIO;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.poi.ss.usermodel.*;
+
+public class ExcelFileCopy {
+	
+	public static void copyExcelFile(String sourceFilePath, String destinationFilePath) throws IOException {
+     
+        FileInputStream sourceFileInputStream = new FileInputStream(sourceFilePath);
+        Workbook sourceWorkbook = WorkbookFactory.create(sourceFileInputStream);
+        sourceFileInputStream.close();
+
+        
+        Workbook destinationWorkbook = WorkbookFactory.create(true);
+
+        
+        for (int i = 0; i < sourceWorkbook.getNumberOfSheets(); i++) {
+            Sheet sourceSheet = sourceWorkbook.getSheetAt(i);
+            Sheet destinationSheet = destinationWorkbook.createSheet(sourceSheet.getSheetName());
+
+            
+            for (int j = 0; j <= sourceSheet.getLastRowNum(); j++) {
+                Row sourceRow = sourceSheet.getRow(j);
+                Row destinationRow = destinationSheet.createRow(j);
+
+                
+                for (int k = 0; k < sourceRow.getLastCellNum(); k++) {
+                    Cell sourceCell = sourceRow.getCell(k);
+                    Cell destinationCell = destinationRow.createCell(k);
+
+                    if (sourceCell != null) {
+                        switch (sourceCell.getCellType()) {
+                            case STRING:
+                                destinationCell.setCellValue(sourceCell.getStringCellValue());
+                                break;
+                            case NUMERIC:
+                                destinationCell.setCellValue(sourceCell.getNumericCellValue());
+                                break;
+                            case BOOLEAN:
+                                destinationCell.setCellValue(sourceCell.getBooleanCellValue());
+                                break;
+                            case FORMULA:
+                                destinationCell.setCellFormula(sourceCell.getCellFormula());
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Write the destination workbook to the destination file
+        FileOutputStream destinationFileOutputStream = new FileOutputStream(destinationFilePath);
+        destinationWorkbook.write(destinationFileOutputStream);
+        destinationFileOutputStream.close();
+        destinationWorkbook.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        String sourceFilePath = "../MarchBatchSelenium/MyData.xlsx";
+        String destinationFilePath = "../MarchBatchSelenium/CopiedData.xlsx";
+
+       
+            copyExcelFile(sourceFilePath, destinationFilePath);
+            System.out.println("Data has been successfully copied from source file to destination file.");
+    }
+
+}

@@ -1,0 +1,10 @@
+package in.debasish.NormalAPITesting;
+
+public class APIBatchJsonExtractionUsingOrgJson {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

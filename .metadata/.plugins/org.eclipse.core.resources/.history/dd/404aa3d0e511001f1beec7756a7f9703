@@ -1,0 +1,66 @@
+package in.debasish.fileIO;
+
+import java.io.FileInputStream;
+
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelReader {
+
+	public static String readDataBasedUponRowNoAndColumnNo(String filePath, int r, int c) throws Exception {
+
+		FileInputStream file = new FileInputStream(filePath);
+		Workbook workbook = WorkbookFactory.create(file);
+		Sheet sheet = workbook.getSheetAt(0);
+
+		if (sheet != null) {
+			Row row = sheet.getRow(r - 1);
+
+			if (row != null) {
+				Cell cell = row.getCell(c);
+				if (cell != null) {
+					return ExcelReader1.getCellValue(cell);
+				} else {
+					throw new IllegalArgumentException("Cell (" + r + "," + c + ") is Empty.");
+				}
+			} else {
+				throw new IllegalArgumentException("Given Row does not exist" + r);
+			}
+		} else {
+
+			throw new IllegalArgumentException("Sheet does not in the Excel file.");
+		}
+	}
+
+	public static String getCellValue(Cell cell) {
+
+		if (cell == null) {
+			return "";
+		}
+
+		switch (cell.getCellType()) {
+		case STRING:
+			return cell.getStringCellValue();
+		case NUMERIC:
+			return String.valueOf(cell.getNumericCellValue());
+		case BOOLEAN:
+			return String.valueOf(cell.getBooleanCellValue());
+		case FORMULA:
+			return cell.getCellFormula();
+		default:
+			return "No Data";
+
+		}
+
+	}
+
+	public static void main(String[] args) throws Exception {
+		String filePath = "../MarchBatchSelenium/MyData.xlsx";
+		int rowNo = 5;
+		int columnNo = 1;
+
+		String cellData = readDataBasedUponRowNoAndColumnNo(filePath, rowNo, columnNo);
+		System.out.println("Data from cell (" + rowNo + ", " + columnNo + "): " + cellData);
+	}
+}

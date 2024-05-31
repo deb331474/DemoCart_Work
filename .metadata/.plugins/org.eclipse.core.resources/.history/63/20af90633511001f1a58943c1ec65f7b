@@ -1,0 +1,9 @@
+package in.debasish.NativeApp;
+
+public class SimpleSendKeysEvents {
+
+	public static void main(String[] args) {
+
+	}
+
+}

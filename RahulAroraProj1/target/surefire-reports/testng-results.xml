@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="5" failed="0" skipped="1">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-02-04T20:05:58 IST" name="Data Driven Basics" finished-at="2024-02-04T20:06:16 IST" duration-ms="17695">
+    <groups>
+    </groups>
+    <test started-at="2024-02-04T20:05:58 IST" name="Bank Manager Login Test" finished-at="2024-02-04T20:05:58 IST" duration-ms="171">
+      <class name="in.debasish.testCases.BankManagerLoginTest">
+        <test-method signature="loginAsManager()[pri:0, instance:in.debasish.testCases.BankManagerLoginTest@1c3146bc]" started-at="2024-02-04T20:05:58 IST" name="loginAsManager" finished-at="2024-02-04T20:05:58 IST" duration-ms="146" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginAsManager -->
+      </class> <!-- in.debasish.testCases.BankManagerLoginTest -->
+    </test> <!-- Bank Manager Login Test -->
+    <test started-at="2024-02-04T20:05:59 IST" name="Add Customer Test" finished-at="2024-02-04T20:06:16 IST" duration-ms="17169">
+      <class name="in.debasish.testCases.AddCustomerTest">
+        <test-method signature="addCustomerTest(java.util.Hashtable)[pri:0, instance:in.debasish.testCases.AddCustomerTest@11981797]" started-at="2024-02-04T20:05:59 IST" name="addCustomerTest" data-provider="dp" finished-at="2024-02-04T20:06:03 IST" duration-ms="4496" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{alerttext=Customer added successfully, postcode=A234dw2, lastname=Z, firstname=A}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomerTest -->
+        <test-method signature="addCustomerTest(java.util.Hashtable)[pri:0, instance:in.debasish.testCases.AddCustomerTest@11981797]" started-at="2024-02-04T20:06:03 IST" name="addCustomerTest" data-provider="dp" finished-at="2024-02-04T20:06:07 IST" duration-ms="4214" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{alerttext=Customer added successfully, postcode=A2354wd, lastname=Pruseth, firstname=Debasish}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomerTest -->
+        <test-method signature="addCustomerTest(java.util.Hashtable)[pri:0, instance:in.debasish.testCases.AddCustomerTest@11981797]" started-at="2024-02-04T20:06:07 IST" name="addCustomerTest" data-provider="dp" finished-at="2024-02-04T20:06:12 IST" duration-ms="4230" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{alerttext=Customer added successfully, postcode=A23496, lastname=Arora, firstname=Subhasish}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomerTest -->
+        <test-method signature="addCustomerTest(java.util.Hashtable)[pri:0, instance:in.debasish.testCases.AddCustomerTest@11981797]" started-at="2024-02-04T20:06:12 IST" name="addCustomerTest" data-provider="dp" finished-at="2024-02-04T20:06:16 IST" duration-ms="4209" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{alerttext=Customer added successfully, postcode=A2wd, lastname=Sehgal, firstname=Apple}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addCustomerTest -->
+      </class> <!-- in.debasish.testCases.AddCustomerTest -->
+    </test> <!-- Add Customer Test -->
+    <test started-at="2024-02-04T20:06:16 IST" name="Open Account Test" finished-at="2024-02-04T20:06:16 IST" duration-ms="4">
+      <class name="in.debasish.testCases.OpenAccountTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:in.debasish.testCases.OpenAccountTest@aeab9a1]" started-at="2024-02-04T20:05:51 IST" name="setUp" finished-at="2024-02-04T20:05:58 IST" duration-ms="6858" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="openAccountTest(java.util.Hashtable)[pri:0, instance:in.debasish.testCases.OpenAccountTest@aeab9a1]" started-at="2024-02-04T20:06:16 IST" name="openAccountTest" data-provider="dp" finished-at="2024-02-04T20:06:16 IST" duration-ms="1" status="SKIP">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{currency=Rupee, customer=Harry Potter}]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Skipping the test OPENACCOUNTTESTas the Run mode is NO]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Skipping the test OPENACCOUNTTESTas the Run mode is NO
+at in.debasish.testCases.OpenAccountTest.openAccountTest(OpenAccountTest.java:20)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:295)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:84)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:90)
+at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:203)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:155)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openAccountTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:in.debasish.testCases.OpenAccountTest@aeab9a1]" started-at="2024-02-04T20:06:16 IST" name="tearDown" finished-at="2024-02-04T20:06:16 IST" duration-ms="311" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- in.debasish.testCases.OpenAccountTest -->
+    </test> <!-- Open Account Test -->
+  </suite> <!-- Data Driven Basics -->
+</testng-results>

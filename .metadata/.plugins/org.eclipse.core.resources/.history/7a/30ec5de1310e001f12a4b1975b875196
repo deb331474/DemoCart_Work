@@ -1,0 +1,70 @@
+
+package in.debasish.NormalAPITesting;
+
+import static io.restassured.RestAssured.given;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+public class APIBatchJsonExtractionUsingOrgJson {
+
+	public static void main(String[] args) {
+
+		Response res=given().contentType(ContentType.JSON).when().get("http://localhost:3000/APIBatchStudents");
+		//System.out.println("Status Code is"+res.getStatusCode());
+		//System.out.println("The complete data is:"+res.asString());
+		
+		
+		JSONArray js=new JSONArray(res.asString());
+		JSONObject jo=js.getJSONObject(0);
+		System.out.println("The intended age is:"+jo.get("age"));
+		System.out.println("The intended id is:"+jo.get("id"));
+		System.out.println("The intended name is:"+jo.get("name"));
+		System.out.println("The intended skills are:"+jo.get("programming_languages"));
+		
+		
+		JSONArray students = new JSONArray(res.asString());
+
+		for (int i = 0; i < students.length(); i++) {
+		      JSONObject student = students.getJSONObject(i);
+
+		      int id = student.getInt("id");
+		      String name = student.getString("name");
+		      String grade = student.getString("grade");
+
+		      // Check if specific fields exist before accessing them (optional)
+		      if (student.has("job")) {
+		        String job = student.getString("job");
+		        System.out.println("ID: " + id + ", Name: " + name + ", Grade: " + grade + ", Job: " + job);
+		      } else {
+		        System.out.println("ID: " + id + ", Name: " + name + ", Grade: " + grade);
+		      }
+
+		      // Access address (if present)
+		      if (student.has("address")) {
+		        String address = student.getString("address");
+		        System.out.println("Address: " + address);
+		      }
+
+		      // Access skills array (if present)
+		      if (student.has("skills")) {
+		        JSONArray skills = student.getJSONArray("skills");
+		        for (int j = 0; j < skills.length(); j++) {
+		          JSONObject skillSet = skills.getJSONObject(j);
+		          if (skillSet != null) { // Check for null before accessing
+		            String skill1 = skillSet.getString("skill1");
+		            String skill2 = skillSet.getString("skill2");
+		            String skill3 = skillSet.getString("skill3");
+		            System.out.println("  Skills: " + skill1 + ", " + skill2 + ", " + skill3);
+		          }
+		        }
+		      }
+		      System.out.println("--------");
+		    }
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package in.debasish.testScripts;
+
+import java.util.Properties;
+
+import in.debasish.testSteps.HTTPMethods;
+import in.debasish.utilities.PropertiesHandle;
+
+public class TC4_GetSDETBatchStudents {
+
+	public static void main(String[] args) throws Exception {
+
+		Properties p=PropertiesHandle.loadProperties("../ApiAutomation/URI.properties");
+		HTTPMethods hm=new HTTPMethods(p);
+		hm.getMethod("QA_URI_DevOps");
+	}
+
+}

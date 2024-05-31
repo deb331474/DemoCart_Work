@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;in.debasish.pa/src/test/resources&apos;&#x0D;&#x0A;- Original project: &apos;democart&apos;&#x0D;&#x0A;- Destination element: &apos;in.debasish.pa/src/test/resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     config.properties&#x0D;&#x0A;     log4j2.xml" description="Copy files" destination="=in.debasish.pa/src\/test\/resources=/maven.pomderived=/true=/=/test=/true=/=/optional=/true=/" element1="src/test/resources/config.properties" element2="src/test/resources/log4j2.xml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1697271133307" units="0" version="1.0"/>
+</session>

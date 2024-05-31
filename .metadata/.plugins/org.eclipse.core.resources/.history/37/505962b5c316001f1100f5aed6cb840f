@@ -1,0 +1,10 @@
+package in.debasish.triggerPackage;
+
+public class TriggerClassMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
